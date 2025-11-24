@@ -507,6 +507,7 @@ spec:
       dnsPolicy: ClusterFirst
       nodeSelector:
         kubernetes.io/os: linux
+        node-role.kubernetes.io/control-plane: ""
       serviceAccountName: ingress-nginx
       terminationGracePeriodSeconds: 0
       tolerations:
@@ -643,4 +644,3 @@ metadata:
   name: nginx
 spec:
   controller: k8s.io/ingress-nginx
-
