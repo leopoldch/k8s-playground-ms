@@ -25,6 +25,14 @@ spec:
       containers:
       - name: feedback-api
         image: lchappuis/feedback-api:submission
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80 # port interne du conteneur et pas externe !
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 3
         env:
         - name: DATABASE_DIR
           value: "/app/database"
