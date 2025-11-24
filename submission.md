@@ -15,6 +15,9 @@ XXXXX
 
 ### Commentaires généraux:
 
+### Nginx ingress ! 
+attention comme le TP a été fait sur kind pour que tout fonctionne et soit accéssible l'ingress a été installé sur le master node; c'est une mauvaise pratique et peut être changé facilement mais pour que tout fonctionne directement avec une seule commande c'était un passage obligatoire avec l'utilisation de Kind. Il doit être scotché au noeud qui est ouvert vers l'extérieur.
+
 ### feedback-api
 
 Gestion de la DB : Un problème survient du fait que SQLite est un fichier et non un serveur de base de données.
