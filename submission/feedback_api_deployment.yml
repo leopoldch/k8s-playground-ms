@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: feedback-api
+  template:
+    metadata:
+      labels:
+        app: feedback-api
+    spec:
+      affinity:
+          podAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - feedback-api
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: feedback-api
+        image: lchappuis/feedback-api:submission
+        env:
+        - name: DATABASE_DIR
+          value: "/app/database"
+        volumeMounts:
+        - mountPath: /app/database
+          name: db-storage
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: feedback-db-pvc
