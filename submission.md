@@ -1,7 +1,9 @@
 # Description de la remise
 
-### Nom complet: XXXXX
-### NIP: 111 111 111
+### Nom complet: Léopold Andre Gaston Chappuis
+### NIP: 537 393 109
+### Nom complet: ...
+### NIP: ... 
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
 Exemple:
 - (FA2) Intégration du Service Mesh Consul-Connect ==> 5%
