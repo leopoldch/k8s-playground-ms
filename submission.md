@@ -11,7 +11,10 @@ Exemple:
 - (FA24) Configuration de Canary Deployment et/ou Blue-green/A-B Deployment ==> 10%
 
 ### Directives nécessaires à la correction
-XXXXX
+Pour appliquer les configs: `kubectl apply -R -f submission` car pour des soucis de propreté les configurations sont rangés dans différents dossiers.
+
+Grafana est accéssible à travers `/admin/grafana`
+
 
 ### Commentaires généraux:
-XXXXX
+L'ingress de grafana a été défini dans un autre que l'application car dans un autre namespace pour la propreté
