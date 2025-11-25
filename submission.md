@@ -4,11 +4,9 @@
 ### NIP: 111 111 111
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
 Exemple:
-- (FA2) Intégration du Service Mesh Consul-Connect ==> 5%
-- (FA21) Intégration de la fonctionnalité de Service Discovery de Consul-Connect ==> 5%
-- (FA22) Observabilité des services et de leurs états (healthcheck) au travers du UI de Consul ==> 5%
-- (FA23) Définition d'Intentions limitant la communication entre les services au strict nécessaire ==> 10%
-- (FA24) Configuration de Canary Deployment et/ou Blue-green/A-B Deployment ==> 10%
+- (FA31) Intégration d'un outil de gestion de journaux (Loki, Promtail) ==> 5%
+  Implémentation réalisée avec un DaemonSet (Promtail) et Loki, tel que vu dans le cadre du cours. Un dashboard de visualisation est disponible sur Grafana (/admin/grafana). 
+  **Note technique :** En raison de l'utilisation de l'environnement *Kind*, nous avons dû attribuer des droits privilégiés (`privileged: true`, `runAsUser: 0`) au DaemonSet. Ces permissions, bien que non recommandées en production, étaient strictement requises dans le cadre de ce TP pour permettre à Promtail de lire correctement les fichiers de logs sur les nœuds virtuels.
 
 ### Directives nécessaires à la correction
 Pour appliquer les configs: `kubectl apply -R -f submission` car pour des soucis de propreté les configurations sont rangés dans différents dossiers.
