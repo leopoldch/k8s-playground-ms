@@ -81,7 +81,7 @@ data:
       http_listen_port: 9080
       grpc_listen_port: 0
     positions:
-      filename: /tmp/positions.yaml
+      filename: /run/promtail/positions.yaml
     clients:
       - url: http://loki:3100/loki/api/v1/push
     scrape_configs:
@@ -102,6 +102,11 @@ data:
           - action: replace
             source_labels: [__meta_kubernetes_pod_container_name]
             target_label: container
+          - source_labels: [__meta_kubernetes_pod_uid, __meta_kubernetes_pod_container_name]
+            action: replace
+            separator: "/"
+            target_label: __path__
+            replacement: /var/log/pods/*$1/$2/*.log
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -117,12 +122,20 @@ spec:
       labels:
         app: promtail
     spec:
-      serviceAccountName: prometheus 
+      serviceAccountName: prometheus
       containers:
         - name: promtail
           image: grafana/promtail:2.9.2
           args:
             - "-config.file=/etc/promtail/promtail.yaml"
+          env:
+            - name: HOSTNAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            privileged: true
+            runAsUser: 0
           volumeMounts:
             - name: config
               mountPath: /etc/promtail
