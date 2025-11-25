@@ -33,7 +33,9 @@ spec:
         - name: grafana-dashboards-provider
           mountPath: /etc/grafana/provisioning/dashboards
         - name: grafana-dashboards
-          mountPath: /etc/grafana/dashboards
+          mountPath: /etc/grafana/dashboards/pods
+        - name: grafana-dashboards-logs
+          mountPath: /etc/grafana/dashboards/logs
       volumes:
       - name: grafana-datasources
         configMap:
@@ -44,6 +46,9 @@ spec:
       - name: grafana-dashboards
         configMap:
           name: grafana-dashboard-pods
+      - name: grafana-dashboards-logs
+        configMap:
+          name: grafana-dashboard-logs
 ---
 apiVersion: v1
 kind: Service
