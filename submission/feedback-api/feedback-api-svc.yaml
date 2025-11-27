@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: feedback-api-svc
+spec:
+  selector:
+  # comme mentionné sur le schéma on ne pas passe par l'api-gateway 
+  # mais directement vers feedback-api !
+    app: feedback-api
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 80
+  type: ClusterIP

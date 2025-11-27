@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: admin-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      # regex: /admin, suivi d'un slash optionnel, et ensuite lit "feedback"
+      # on peut rajouter /admin(/|$)(polarity.*) qui peut renvoyer vers un autre service 
+      # comme polarity-api par exemple
+      - path: /admin(/|$)(feedback.*)
+        pathType: ImplementationSpecific # plus robuste que Prefix
+        backend:
+          service:
+            name: feedback-api-svc
+            port:
+              number: 9000
