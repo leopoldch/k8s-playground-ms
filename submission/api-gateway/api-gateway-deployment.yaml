@@ -21,7 +21,7 @@ spec:
             - name: LOGIC_API_URL
               value: http://logic-api:5000
             - name: FEEDBACK_API_URL
-              value: http://feedback-api:5001
+              value: http://feedback-api-svc:9000
           ports:
             - containerPort: 8080
           livenessProbe:
