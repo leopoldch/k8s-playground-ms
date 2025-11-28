@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logic-api
+  labels:
+    app: logic-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: logic-api
+  template:
+    metadata:
+      labels:
+        app: logic-api
+    spec:
+      affinity:
+          podAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - logic-api
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: logic-api
+          image: lchappuis/logic-api:submission
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
