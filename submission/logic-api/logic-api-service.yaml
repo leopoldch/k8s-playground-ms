@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: logic-api-svc # voire pour changer selon norme prof et api gateway https://github.com/Padel75/glo7008-TP2-EQ6/pull/13/files/c313197c263fe84675dba86ab52b4f93c5d06d3c#diff-59702eb50f521bbd30db19c8eeaf33f3d640fab81ae57eaf6d48bf41c439a96d 
+  name: logic-api-svc
   labels:
     app: logic-api
 spec:
