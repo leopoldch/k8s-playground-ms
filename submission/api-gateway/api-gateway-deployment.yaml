@@ -19,7 +19,7 @@ spec:
           image: lchappuis/api-gateway:submission
           env:
             - name: LOGIC_API_URL
-              value: http://logic-api:5000
+              value: http://logic-api-svc:5000
             - name: FEEDBACK_API_URL
               value: http://feedback-api-svc:9000
           ports:
