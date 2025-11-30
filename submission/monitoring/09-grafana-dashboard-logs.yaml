@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-logs
+  namespace: monitoring
+data:
+  logs-monitoring.json: |
+    {
+      "annotations": { "list": [] },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "links": [],
+      "panels": [
+        {
+          "datasource": "Loki",
+          "gridPos": { "h": 18, "w": 24, "x": 0, "y": 0 },
+          "id": 2,
+          "options": {
+            "showTime": true,
+            "showLabels": false,
+            "showCommonLabels": false,
+            "wrapLogMessage": true,
+            "preload": false,
+            "sortOrder": "Descending"
+          },
+          "targets": [
+            {
+              "expr": "{namespace=\"default\"}",
+              "refId": "A"
+            }
+          ],
+          "title": "Application Logs (Namespace Default)",
+          "type": "logs"
+        }
+      ],
+      "schemaVersion": 26,
+      "style": "dark",
+      "tags": [],
+      "templating": { "list": [] },
+      "time": { "from": "now-1h", "to": "now" },
+      "timepicker": {},
+      "timezone": "",
+      "title": "TP2 - Logs",
+      "uid": "tp2-logs",
+      "version": 1
+    }
