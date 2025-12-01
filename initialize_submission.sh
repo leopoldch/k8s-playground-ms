@@ -36,4 +36,3 @@ docker compose push
 
 echo "Submission initialized"
 exit 0
-
