@@ -6,6 +6,9 @@
 ### Nom complet: Pascal de Le Rue
 ### NI: 111 187 065
 
+### Nom complet: Audrey Eliane Andrée Dive
+### NI: 537 393 135
+
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
 Exemple:
 - (FA31) Intégration d'un outil de gestion de journaux (Loki, Promtail) ==> 5%
