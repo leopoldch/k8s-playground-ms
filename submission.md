@@ -9,8 +9,12 @@
 ### Nom complet: Audrey Eliane Andrée Dive
 ### NI: 537 393 135
 
+### Nom complet: Christopher Bilodeau
+### NI: 536 785 193
+
+
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
-Exemple:
+-  (FA1) Sécuriser et encrypter les communications au travers de certificats SSL ==> 10%
 - (FA31) Intégration d'un outil de gestion de journaux (Loki, Promtail) ==> 5%
   Implémentation réalisée avec un DaemonSet (Promtail) et Loki, tel que vu dans le cadre du cours. Un dashboard de visualisation est disponible sur Grafana (/admin/grafana). 
   **Note technique :** En raison de l'utilisation de l'environnement *Kind*, nous avons dû attribuer des droits privilégiés (`privileged: true`, `runAsUser: 0`) au DaemonSet. Ces permissions, bien que non recommandées en production, étaient strictement requises dans le cadre de ce TP pour permettre à Promtail de lire correctement les fichiers de logs sur les nœuds virtuels.
