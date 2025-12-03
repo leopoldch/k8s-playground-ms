@@ -9,6 +9,10 @@
 ### Nom complet: Audrey Eliane Andrée Dive
 ### NI: 537 393 135
 
+### Nom complet: Christopher Bilodeau
+### NI: 536 785 193
+
+
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
 Exemple:
 - (FA31) Intégration d'un outil de gestion de journaux (Loki, Promtail) ==> 5%
