@@ -20,9 +20,13 @@ Pour appliquer les configs: `kubectl apply -R -f submission` car pour des soucis
 Grafana est accéssible à travers `/admin/grafana`
 Monitoring des ressources physiques avec Prometheus.
 
-Attendre que tout soit bien lancé, il y a beaucoup de choses ça peut prendre une à deux minutes.
+Attendre que tout soit bien lancé, il y a beaucoup de choses ça peut prendre une à deux minutes. (`PR_END_OF_FILE_ERROR` et `PR_CONNECT_RESET_ERROR`, il faut juste attendre que tout soit bien lancé)
 
 ### Commentaires généraux:
+
+### Service Worker (!)
+
+Attention, l'app frontend fait tourner un service worker qui renvoie vers la page de frontend une fois accédée, plus simplement, une fois que l'app ouvre la page de frontend, il est impossible de joindre les autres endpoints pour afficher autre chose. 
 
 ### Nginx ingress ! 
 attention comme le TP a été fait sur kind pour que tout fonctionne et soit accéssible l'ingress a été installé sur le master node; c'est une mauvaise pratique et peut être changé facilement mais pour que tout fonctionne directement avec une seule commande c'était un passage obligatoire avec l'utilisation de Kind. Il doit être scotché au noeud qui est ouvert vers l'extérieur.
