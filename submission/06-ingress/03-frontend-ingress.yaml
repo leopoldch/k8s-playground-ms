@@ -4,13 +4,11 @@ metadata:
   name: frontend-ingress
   annotations:
     ingress.class: nginx
-    cert-manager.io/cluster-issuer: ca-issuer 
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
-    - host: sentence-analyser.local
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -22,4 +20,4 @@ spec:
   tls:
     - hosts:
       - sentence-analyser.local
-      secretName: frontend-tls-secret
+      secretName: sentence-analyser-secret

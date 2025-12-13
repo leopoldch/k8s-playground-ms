@@ -20,6 +20,7 @@ Pour appliquer les configs: `kubectl apply -R -f submission` car pour des soucis
 Grafana est accéssible à travers `/admin/grafana`
 Monitoring des ressources physiques avec Prometheus.
 
+Attendre que tout soit bien lancé, il y a beaucoup de choses ça peut prendre une à deux minutes.
 
 ### Commentaires généraux:
 
@@ -30,6 +31,11 @@ L'ingress de grafana a été défini dans un autre que l'application car dans un
 Grafana peut mettre un certain temps à se lancer, merci d'être patient et d'attendre au moins 1 minute.
 
 Pour permettre le déploiement de l'Ingress NGINX en une seule commande, nous avons du retirer la configuration du ValidatingWebhook. Ce composant, qui est là dans une installation standard, sert à valider la syntaxe des règles Ingress. Cependant, il crée une condition de concurrence (race condition) pendant un déploiement simultané : Kubernetes tente de valider l'Ingress via le Webhook alors que le Pod du contrôleur n'est pas encore prêt, ce qui bloque le déploiement. Le fait de l'avoir retiré n'est pas idéal pour la sécurité/fiabilité, mais était nécessaire pour respecter la contrainte d'exécution unique du TP
+
+### Certificats et encryption
+
+Ici on aurait pu utiliser un ClusterIssuer, un CRD issu de CertManager mais la complexité venait d'une race condition pour creer nos kind:ClusterIssuer etc après que le CRD qoit completement défini, la solution la plus simple pour quand même implémenter des routes sécurisées avec des certificats ssl était d'en générer un statique et d'utiliser celui-ci qui est finalement la même chose, une certificat self-signed. Remarque, dans une réelle implémentation on aurait pu utiliser Let's Encrypt qui permet de faire signer des certificats par des autoritées de certification vérifiées (On n'a pas choisi cette méthode car il aurait fallu un nom de domaine etc...). 
+Note : C'est normal si une page s'affiche et met un warning comme quoi le certificat est self-signed, il faut juste cliquer sur OK et avancer vers le site.
 
 ### feedback-api
 

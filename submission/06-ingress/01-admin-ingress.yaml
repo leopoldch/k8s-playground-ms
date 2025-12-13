@@ -20,3 +20,7 @@ spec:
             name: feedback-api-svc
             port:
               number: 9000
+  tls:
+      - hosts:
+        - sentence-analyser.local
+        secretName: sentence-analyser-secret
