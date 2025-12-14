@@ -33,7 +33,12 @@ Attendre que tout soit bien lancé, il y a beaucoup de choses ça peut prendre u
 
 ### Service Worker (!)
 
-Attention, l'app frontend fait tourner un service worker qui renvoie vers la page de frontend une fois accédée, plus simplement, une fois que l'app ouvre la page de frontend, il est impossible de joindre les autres endpoints pour afficher autre chose. 
+Attention, l'app frontend fait tourner un service worker qui renvoie vers la page de frontend une fois accédée, plus simplement, une fois que l'app ouvre la page de frontend, il est impossible de joindre les autres endpoints pour afficher autre chose. Pour résoudre cette limitation à travers des scripts kubernetes on supprime le fichier du service-worker avant de tout lancer dans le deployment: 
+
+```yaml    
+  args: 
+    - rm -f /usr/share/nginx/html/service-worker.js && exec nginx -g 'daemon off;'
+```
 
 ### Nginx ingress ! 
 attention comme le TP a été fait sur kind pour que tout fonctionne et soit accessible l'ingress a été installé sur le master node; c'est une mauvaise pratique et peut être changé facilement, mais pour que tout fonctionne directement avec une seule commande c'était un passage obligatoire avec l'utilisation de Kind. Il doit être scotché au noeud qui est ouvert vers l'extérieur.

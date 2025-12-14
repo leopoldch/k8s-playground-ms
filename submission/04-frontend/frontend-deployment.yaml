@@ -17,5 +17,9 @@ spec:
       containers:
         - name: frontend
           image: lchappuis/frontend:submission
+          # deactivate service worker
+          command: ["/bin/sh", "-c"]
+          args: 
+            - rm -f /usr/share/nginx/html/service-worker.js && exec nginx -g 'daemon off;'
           ports:
             - containerPort: 80
