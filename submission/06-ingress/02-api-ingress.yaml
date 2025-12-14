@@ -17,3 +17,7 @@ spec:
                 name: api-gateway
                 port:
                   number: 8080
+  tls:
+      - hosts:
+        - sentence-analyser.local
+        secretName: sentence-analyser-secret
