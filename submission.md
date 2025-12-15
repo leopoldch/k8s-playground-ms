@@ -1,18 +1,5 @@
 # Description de la remise
 
-### Nom complet: Léopold Andre Gaston Chappuis
-### NI: 537 393 109
-
-### Nom complet: Pascal de Le Rue
-### NI: 111 187 065
-
-### Nom complet: Audrey Eliane Andrée Dive
-### NI: 537 393 135
-
-### Nom complet: Christopher Bilodeau
-### NI: 536 785 193
-
-
 ### Liste des codes et descriptions des fonctionnalités sélectionnées:
 -  (FA1) Sécuriser et encrypter les communications au travers de certificats SSL ==> 10%
 - (FA31) Intégration d'un outil de gestion de journaux (Loki, Promtail) ==> 5%
